@@ -68,49 +68,6 @@ function formatResult(data) {
 function sleep(ms) {
   return new Promise(r => setTimeout(r, ms));
 }
-
-// ==========================
-// GITHUB FUNCTIONS
-// ==========================
-
-  try {
-    const { data } = await // octokit.repos.getContent({
-    return { content, sha: data.sha };
-  } catch (error) {
-    if (error.status === 404) {
-      return { content: '', sha: null };
-    }
-    throw error;
-  }
-}
-
-  return await // octokit.repos.createOrUpdateFileContents({
-  });
-}
-
-    
-    if (!content.trim()) {
-      return { success: false, message: "Tidak ada data email." };
-    }
-
-    const lines = content.split('\n').filter(line => line.trim() !== '');
-    const originalLength = lines.length;
-    const newLines = lines.filter(line => !line.includes(target.split(':')[0]));
-
-    if (originalLength === newLines.length) {
-      return { success: false, message: "Email tidak ditemukan." };
-    }
-
-    const newContent = newLines.join('\n');
-    await dbAppend(newContent, sha);
-
-    return { success: true, message: "Email berhasil dihapus." };
-  } catch (error) {
-    console.error('Error deleting email:', error);
-    return { success: false, message: error.message };
-  }
-}
-
 // ==========================
 // ==========================
 // LOCAL DB (folder db/)
