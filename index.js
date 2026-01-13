@@ -1,3 +1,5 @@
+// KEEP ALIVE (wajib di Koyeb biar gak exit code 0)
+setInterval(() => {}, 1 << 30); 
 // Load .env if present (recommended for tokens)
 require('dotenv').config();
 
